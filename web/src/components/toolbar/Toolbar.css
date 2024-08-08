@@ -1,0 +1,15 @@
+.toolbar {
+    width: 60px;
+    height: 100vh;
+    background: var(--color-page-background);
+    padding: 5px 10px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 199;
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, .3);
+}
+
+.toolbar~.page-content {
+    padding-right: 60px;
+}
