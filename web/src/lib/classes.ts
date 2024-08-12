@@ -57,6 +57,11 @@ export class CanvasHandler {
 			this._scene?.appendChild(legend);
 		}
 
+		// cringe
+		if (this._legend.childNodes.length != 0) {
+			return;
+		}
+
 		this.clusters.forEach((cluster, i) => {
 			this.createMapLegendItem(cluster.name, this.colors[i]);
 		});

@@ -12,7 +12,7 @@ export default function Composition(props: SongProps) {
 
 	for (const key in props.info) {
 		const value = props.info[key as keyof SongInfo];
-		infoFields.push(<InfoField key={key} infoKey={key} infoValue={value}/>);
+		infoFields.push(<InfoField key={key} infoKey={key} infoValue={value} />);
 	}
 
 	if (!props.info) {
@@ -47,11 +47,11 @@ type PlatformStatProps = {
 }
 
 function PlatformStat(props: PlatformStatProps) {
-	const value = props.value ?? 0;
+	const { value, icon } = props;
 
 	return (
 		<div className="composition-stats-block">
-			<FontAwesomeIcon icon={props.icon} />
+			<FontAwesomeIcon icon={icon} />
 			<span>{value} views</span>
 		</div>
 	);
@@ -62,11 +62,13 @@ type InfoFieldProps = {
 	infoValue: number | string | Date
 }
 
-function InfoField(props: InfoFieldProps) {	
+function InfoField(props: InfoFieldProps) {
+	const { infoKey, infoValue } = props;
+
 	return (
 		<div className="composition-showcase-extra__item">
-			<span>{props.infoKey}</span>
-			<span>{String(props.infoValue)}</span>
+			<span>{infoKey}</span>
+			<span>{String(infoValue)}</span>
 		</div>
 	);
 }

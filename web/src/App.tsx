@@ -13,17 +13,25 @@ function App() {
 	const [activeInfo, setActiveInfo] = useState<SongInfo>();
 
 	useEffect(() => {
-		axios.get('/api/data')
-			.then(
-				result => {
-					setClusters(result.data);	
-					// console.log(result.data);						
-				}
-			)
-			.finally(() => {
-				initCanvasHandler();
-			});
+		fetchClusters();
 	}, []);
+
+	useEffect(() => {
+		if (clusters.length === 0) {
+			return;
+		}
+		
+		initCanvasHandler();
+	}, [clusters]);
+
+	async function fetchClusters() {
+		try {
+			const result = await axios.get('/api/data');
+			setClusters(result.data);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
 
 	function initCanvasHandler() {
 		const canvas = document.getElementsByTagName('canvas')[0];
