@@ -1,7 +1,6 @@
 export type SongInfo = {
 	"Track": string,
-	"Album": string,
-	"Name": string,
+	"Album Name": string,
 	"Artist": string
 	"Release Date": Date,
 	"ISRC": string,
