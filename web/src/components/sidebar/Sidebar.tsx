@@ -1,10 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-import { SongProps } from "../../lib/Song";
+import { SongInfo } from "../../lib/types";
+
+import Composition from "../Composition/Composition";
 
 import "./Sidebar.css";
-import Composition from "../Composition/Composition";
+
+export type SongProps = {
+	info: SongInfo;
+}
 
 export default function Sidebar(props: SongProps) {
 	function CloseSidebar() {
@@ -18,7 +23,7 @@ export default function Sidebar(props: SongProps) {
 				<FontAwesomeIcon icon={faClose} />
 			</button>
 
-			<Composition info={props.info}/>
+			<Composition info={props.info as SongInfo}/>
 		</div>
 	);
 }

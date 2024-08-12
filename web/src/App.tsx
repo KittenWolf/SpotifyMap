@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { CanvasHandler } from './lib/CanvasHandler';
-import { Point } from './lib/Point';
-import { SongInfo, SongMark } from './lib/Song';
+import { CanvasHandler } from './lib/classes';
+import { Cluster, SongInfo } from './lib/types';
 
 import Sidebar from './components/sidebar/Sidebar';
 import Toolbar from './components/toolbar/Toolbar';
@@ -10,42 +9,39 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-	const [data, setData] = useState<SongInfo[]>([]);
+	const [clusters, setClusters] = useState<Cluster[]>([]);
 	const [activeInfo, setActiveInfo] = useState<SongInfo>();
 
 	useEffect(() => {
 		axios.get('/api/data')
 			.then(
 				result => {
-					setData(result.data);
-					initCanvasHandler();
+					setClusters(result.data);	
+					// console.log(result.data);						
 				}
-			);
+			)
+			.finally(() => {
+				initCanvasHandler();
+			});
 	}, []);
 
 	function initCanvasHandler() {
-		const marks: SongMark[] = [];
 		const canvas = document.getElementsByTagName('canvas')[0];
+		const canvasHandler = new CanvasHandler(canvas, setActiveInfo);
 
-		data.forEach(obj => {
-			const x = Math.random() * canvas.width;
-			const y = Math.random() * canvas.height;
-
-			marks.push(new SongMark(obj, new Point(x, y)));
+		clusters.forEach(cluster => {
+			canvasHandler.clusters.push(cluster);
 		});
 
-		const canvasHandler = new CanvasHandler(canvas, marks, setActiveInfo);
-
-		canvasHandler.drawObjects();
-
-		// console.log("Init canvas");		
+		canvasHandler.createMapLegend();
+		canvasHandler.renderClusters();	
 	}
 
 	return (
 		<div className="App">
 			<div className="page-wrapper">
 				<Toolbar />
-				<Sidebar info={activeInfo}/>
+				<Sidebar info={activeInfo as SongInfo} />
 
 				<div className="page-content">
 					<div id="scene" className="scene">

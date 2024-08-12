@@ -79,7 +79,7 @@ hr {
 	/* padding: 75px 100px; */
 	display: flex;
 	position: relative;
-	overflow: scroll;
+	/* overflow: scroll; */
 }
 
 .scene::-webkit-scrollbar,
@@ -92,8 +92,29 @@ hr {
 	background: var(--color-accent);
 }
 
-.Map {
+.map {
 	background: var(--color-page-background);
+}
+
+.map-legend {
+	width: max-content;
+	height: min-content;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+}
+
+.map-legend__item {
+	width: max-content;
+	height: min-content;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	color: var(--color-text-primary);
+}
+
+.map-legend__item>div {
+	margin: 0 5px;
 }
 
 .btn {

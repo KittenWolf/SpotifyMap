@@ -44,6 +44,6 @@ export type Cluster = {
 
 export type Song = {
 	info: SongInfo;
-	point?: Point;
+	point: Point;
 	path2D?: Path2D;
 }
