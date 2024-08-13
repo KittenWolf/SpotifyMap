@@ -1,0 +1,36 @@
+:root {
+	/* Colours */
+	--color-absolute: #000000;
+	--color-primary: #111111;
+	--color-secondary: #292a2d;
+	--color-third: #f4f4f4;
+	
+	--color-page-background: #111111;
+	--color-sidebar-background: #292a2d;
+	--color-content-background: #111111;
+	
+	--color-text-primary: #f4f4f4;
+	--color-text-subhead: #999999;
+	--color-text-secondary: #373737;
+	--color-text-tertiary: #111111;
+
+	--color-accent: #1db954;
+	--color-warning: #f0c859;
+	--color-error: #f74e4e;
+
+	/* Transition */
+	--transition--speed: 0.15s;
+	--transition--animation: ease-out;
+
+	/* z-index */
+	--index-mobileImages: 0;
+	--index-blot: 5;
+	--index-images: 10;
+	--index-content: 15;
+	--index-popup: 20;
+	--index-header: 25;
+
+	--fz-h1: 3em;
+	--fz-h2: 2em;
+	--fz-text: 1em;
+}
