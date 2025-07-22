@@ -1,6 +1,7 @@
 {
   "name": "web",
   "version": "0.1.0",
+  "homepage": "https://KittenWolf.github.io/SpotifyMap",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -24,8 +25,10 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build && mv ./build ../app",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -50,6 +53,7 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "gh-pages": "^6.1.1",
     "http-proxy-middleware": "^2.0.6"
   }
 }

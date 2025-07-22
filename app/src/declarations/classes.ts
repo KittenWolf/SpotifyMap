@@ -20,6 +20,17 @@ export class CustomClusterAlgorithm {
     return JSON.stringify(this._clusters);
   }
 
+  private createClusters(observations: string[]) {
+    const degree = 360 / observations.length;
+
+    for (let i = 0; i < observations.length; i++) {      
+      const x = Number(Math.cos(degree * i * Math.PI / 180).toFixed(2));
+      const y = Number(Math.sin(degree * i * Math.PI / 180).toFixed(2));
+  
+      this._clusters.push({name: observations[i], songs: [], vector: { x, y }});
+    }
+  }
+
   createNewPoint(song: Song) {
     let x = 0;
     let y = 0;
@@ -60,19 +71,7 @@ export class CustomClusterAlgorithm {
     closestCluster.songs.push(song);  
   }
 
-  private createClusters(observations: string[]) {
-    const degree = 360 / observations.length;
-
-    for (let i = 0; i < observations.length; i++) {      
-      const x = Number(Math.cos(degree * i * Math.PI / 180).toFixed(2));
-      const y = Number(Math.sin(degree * i * Math.PI / 180).toFixed(2));
-  
-      this._clusters.push({name: observations[i], songs: [], vector: { x, y }});
-    }
-  }
-
   private euclideanDistance(point1: Point, point2: Point): number {
     return Math.sqrt((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2);
   }
 }
-

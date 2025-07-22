@@ -32,7 +32,7 @@ export class CanvasHandler {
 		this.initEvents();
 	}
 
-	//#region public
+	//#region Public
 	renderClusters(): void {
 		this.resetCanvas();
 
@@ -171,7 +171,6 @@ export class CanvasHandler {
 
 		this.renderClusters();
 		e.preventDefault();
-
 	}
 	//#endregion	
 	//#endregion
